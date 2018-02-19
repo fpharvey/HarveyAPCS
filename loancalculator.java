@@ -5,8 +5,9 @@ public class loancalculator{
     public static double loanAmt = -1;
     public static int loanTerm = -1;
     public static double interestRate = -1;
-    public static double interest = -1;
+    public static double interest = 0;
     public static double ttlAmountpaid =-1;
+    public static int monthsremaining =-1;
     public static void main(String[] args) {
         //Read in the loan calculation mode
         Scanner scan;
@@ -26,9 +27,11 @@ public class loancalculator{
         if(mode == 1) {
             flatInterest();
         }
-        else {
-            System.out.println("Other modes not yet supported."); //Replace this with calls to your appropriate functions            
+        else if(mode == 2){
+            compoundinterestwithoutpayments(); //Replace this with calls to your appropriate functions            
         }
+        else
+        compoundinterestwithpayments();
     }
 
     public static void flatInterest() {
@@ -67,11 +70,11 @@ public class loancalculator{
                             }
                                         interest = (loanAmt*loanTerm*interestRate)/100;
                                         ttlAmountpaid = interest +loanAmt;
-                                        System.out.println("original loan amount: " + loanAmt);
+                                        System.out.println("original loan amount: " + loanAmt + "$");
                                         System.out.println("interest rate: "+ interestRate +"%");
-                                        System.out.println("loan term: " + loanTerm);
-                                        System.out.println("total Ammount paid over loan: " +ttlAmountpaid);
-                                        System.out.println("total interest paid: " +interest);
+                                        System.out.println("loan term: " + loanTerm + " year(s)");
+                                        System.out.println("total Ammount paid over loan: " +ttlAmountpaid + "$");
+                                        System.out.println("total interest paid: " +interest + "$");
     }
     public static void printModeStatement() {
         System.out.print(
@@ -81,5 +84,83 @@ public class loancalculator{
             + "(3) Compounding Interest With Monthly Payments\n"
         );
     }
+    public static void compoundinterestwithoutpayments() {
+         while(true){
+        System.out.print( "enter a valid loan amount: ");
+        Scanner scan;
+        scan = new Scanner(System.in);
+        if(scan.hasNextDouble()){
+            loanAmt = scan.nextDouble();
+            if(loanAmt >= 0) { 
+                break;}
+    }
+    }           while(true){          
+                    System.out.print( "enter a valid loan term in years: ");
+                    Scanner scan;
+                    scan = new Scanner(System.in);
+                    if(scan.hasNextInt()){
+                        loanTerm = scan.nextInt();
+                        if(loanTerm >= 0){
+                            break;
+                        }
+                    }
+    }
+                            while(true){
+                                System.out.print( "enter a valid interest rate: ");
+                                Scanner scan; 
+                                scan = new Scanner(System.in);
+                                if(scan.hasNextDouble()){
+                                    interestRate = scan.nextDouble();
+                                    if(interestRate>= 0){
+                                        break;
+    }
 }
+                            }
+                                        monthsremaining = loanTerm*12;
+                                        while(monthsremaining >0){
+                                        interest = interest+ (loanAmt+interest)*(interestRate/1200);
+                                        monthsremaining -= 1;
+                                         } 
+                                        ttlAmountpaid = interest +loanAmt;
+                                        System.out.println("original loan amount: "+loanAmt +" $");
+                                        System.out.println("interest rate: "+interestRate + "%");
+                                        System.out.println("loan term: " + loanTerm + " year(s)");
+                                        System.out.println("total Ammount paid over loan: " +ttlAmountpaid + "$");
+                                        System.out.println("total interest paid: " +interest + "$");
+    }
+    public static void compoundinterestwithpayments() {
+          while(true){
+        System.out.print( "enter a valid loan amount: ");
+        Scanner scan;
+        scan = new Scanner(System.in);
+        if(scan.hasNextDouble()){
+            loanAmt = scan.nextDouble();
+            if(loanAmt >= 0) { 
+                break;}
+    }
+    }           while(true){          
+                    System.out.print( "enter a valid loan term in years: ");
+                    Scanner scan;
+                    scan = new Scanner(System.in);
+                    if(scan.hasNextInt()){
+                        loanTerm = scan.nextInt();
+                        if(loanTerm >= 0){
+                            break;
+                        }
+                    }
+    }
+                            while(true){
+                                System.out.print( "enter a valid interest rate: ");
+                                Scanner scan; 
+                                scan = new Scanner(System.in);
+                                if(scan.hasNextDouble()){
+                                    interestRate = scan.nextDouble();
+                                    if(interestRate>= 0){
+                                        break;
+    }
+}
+                            }
+    
+    }
+}    
 
