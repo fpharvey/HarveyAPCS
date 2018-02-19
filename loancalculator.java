@@ -5,7 +5,8 @@ public class loancalculator{
     public static double loanAmt = -1;
     public static int loanTerm = -1;
     public static double interestRate = -1;
-
+    public static double interest = -1;
+    public static double ttlAmountpaid =-1;
     public static void main(String[] args) {
         //Read in the loan calculation mode
         Scanner scan;
@@ -42,7 +43,35 @@ public class loancalculator{
             if(loanAmt >= 0) { 
                 break;}
     }
+    }           while(true){          
+                    System.out.print( "enter a valid loan term in years: ");
+                    Scanner scan;
+                    scan = new Scanner(System.in);
+                    if(scan.hasNextInt()){
+                        loanTerm = scan.nextInt();
+                        if(loanTerm >= 0){
+                            break;
+                        }
+                    }
     }
+                            while(true){
+                                System.out.print( "enter a valid interest rate: ");
+                                Scanner scan; 
+                                scan = new Scanner(System.in);
+                                if(scan.hasNextDouble()){
+                                    interestRate = scan.nextDouble();
+                                    if(interestRate>= 0){
+                                        break;
+                                    }
+                                }
+                            }
+                                        interest = (loanAmt*loanTerm*interestRate)/100;
+                                        ttlAmountpaid = interest +loanAmt;
+                                        System.out.println("original loan amount: " + loanAmt);
+                                        System.out.println("interest rate: "+ interestRate +"%");
+                                        System.out.println("loan term: " + loanTerm);
+                                        System.out.println("total Ammount paid over loan: " +ttlAmountpaid);
+                                        System.out.println("total interest paid: " +interest);
     }
     public static void printModeStatement() {
         System.out.print(
