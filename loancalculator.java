@@ -70,11 +70,11 @@ public class loancalculator{
                             }
                                         interest = (loanAmt*loanTerm*interestRate)/100;
                                         ttlAmountpaid = interest +loanAmt;
-                                        System.out.println("original loan amount: " + loanAmt + "$");
-                                        System.out.println("interest rate: "+ interestRate +"%");
+                                        System.out.println("original loan amount: $ "+loanAmt);
+                                        System.out.println("interest rate: "+interestRate + "%");
                                         System.out.println("loan term: " + loanTerm + " year(s)");
-                                        System.out.println("total Ammount paid over loan: " +ttlAmountpaid + "$");
-                                        System.out.println("total interest paid: " +interest + "$");
+                                        System.out.println("total Ammount paid over loan: $ " +ttlAmountpaid);
+                                        System.out.println("total interest paid: $ " +interest);
     }
     public static void printModeStatement() {
         System.out.print(
@@ -122,11 +122,11 @@ public class loancalculator{
                                         monthsremaining -= 1;
                                          } 
                                         ttlAmountpaid = interest +loanAmt;
-                                        System.out.println("original loan amount: "+loanAmt +" $");
+                                        System.out.println("original loan amount: $ "+loanAmt);
                                         System.out.println("interest rate: "+interestRate + "%");
                                         System.out.println("loan term: " + loanTerm + " year(s)");
-                                        System.out.println("total Ammount paid over loan: " +ttlAmountpaid + "$");
-                                        System.out.println("total interest paid: " +interest + "$");
+                                        System.out.println("total Ammount paid over loan: $ " +ttlAmountpaid);
+                                        System.out.println("total interest paid: $ " +interest);
     }
     public static void compoundinterestwithpayments() {
           while(true){
@@ -160,7 +160,24 @@ public class loancalculator{
     }
 }
                             }
-    
-    }
-}    
+                                        double ratePerMonth = interestRate /1200;
+                                        double monthlyPayment = loanAmt * (ratePerMonth / (1 - Math.pow((1 + ratePerMonth), (loanTerm * -12))));
+                                        double outstandingbalance = loanAmt;
+                                        double interest2 = 0;
+                                        while(outstandingbalance>0){
+                                            interest = outstandingbalance*ratePerMonth;
+                                            outstandingbalance = interest + outstandingbalance - monthlyPayment;
+                                            interest2 = interest2 +interest;
+                                        }
+                                        ttlAmountpaid = interest2 + loanAmt;
+                                        double finalmonthpayment  = monthlyPayment + ttlAmountpaid - (monthlyPayment*12*loanTerm);
+                                        System.out.println("original loan amount: $ "+loanAmt);
+                                        System.out.println("interest rate: "+interestRate + "%");
+                                        System.out.println("loan term: " + loanTerm + " year(s)");              
+                                        System.out.println("monthly payment: $ "+monthlyPayment);
+                                        System.out.println("final month payment: $ "+ finalmonthpayment);
+                                        System.out.println("total Ammount paid over loan: $ " +ttlAmountpaid);
+                                        System.out.println("total interest paid: $ " +interest2);
+    } 
+}   
 
