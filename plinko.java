@@ -4,6 +4,7 @@ class Plinko {
     public static final int SINGLE_DISC = 1;
     public static final int MULTI_DISC = 2;
     public static final int TERMINATE = 3;
+    public static int position = 0;
 
     public static final int[] VALUES = {1, 3, 2, 0, 5, 0, 2, 3, 1};
 
@@ -19,7 +20,7 @@ class Plinko {
             if(scan.hasNextInt()) {
                 mode = scan.nextInt();
                 if(mode == SINGLE_DISC) {
-                    System.out.println("Mode not yet implemented");
+                    Singledisk(position);
                 }
                 else if(mode == MULTI_DISC) {
                     System.out.println("Mode not yet implemented");
@@ -33,7 +34,9 @@ class Plinko {
             }
         }
     }
-
+    public static void singledisk(int position){
+        positionscan();
+}
     public static int runOddRow(int position) {
         //Modify the position.
         //Print the visualization of the row if it's single disc mode.
@@ -44,6 +47,7 @@ class Plinko {
     public static int runEvenRow(int position) {
         //Modify the position.
         //Print the visualization of the row if it's single disc mode.
+        System.out.println("hi");
 
         return position;
     }
@@ -59,5 +63,10 @@ class Plinko {
             + "\t(2) Multiple discs\n"
             + "\t(3) Quit\n"
         );
+    }
+    public static void positionscan(){
+        scan = new Scanner(System.in);
+         if(scan.hasNextInt()) {
+                position = scan.nextInt();
     }
 }
