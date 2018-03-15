@@ -145,8 +145,9 @@ class Plinko {
                     }
             }
         }
-        position = position*2;
+        int userposition = position*2;
         for(int i = numdiscs; i >0 ;i --){
+            position = userposition;
             for(int rowposition=0;rowposition<12;rowposition++){
                 if(position == 0){
                     position++;
