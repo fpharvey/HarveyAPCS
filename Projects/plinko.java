@@ -1,6 +1,8 @@
-import java.util.Scanner;
 
-class Plinko {
+import java.util.*;
+
+
+class plinko {
     public static final int SINGLE_DISC = 1;
     public static final int MULTI_DISC = 2;
     public static final int TERMINATE = 3;
@@ -32,7 +34,6 @@ class Plinko {
                     System.out.println("Goodbye");
                     break;
                 } else {
-                    continue;
                 }
             }
         }
@@ -53,14 +54,23 @@ class Plinko {
         for(int rowposition=0;rowposition<12;rowposition++){
             if(position == 0){
                 printevenrow(position);
+                try {
+                    Thread.sleep(850);
+                } catch (InterruptedException e){}
                 position++;
             }
             else if (position == 16){
                 printevenrow(position);
+                try {
+                    Thread.sleep(850);
+                } catch (InterruptedException e){}
                 position--;
             }
             else if (isEven(rowposition)){
                  printevenrow(position);
+                 try {
+                    Thread.sleep(850);
+                } catch (InterruptedException e){}
                 if(Math.random()>.5){
                     position ++;
                 }   
@@ -70,6 +80,9 @@ class Plinko {
             }
             else if(!isEven(rowposition)){
                 printoddrow(position);
+                try {
+                    Thread.sleep(850);
+                } catch (InterruptedException e){}
                 if(Math.random()>.5){
                     position ++;
                 }   
