@@ -1,7 +1,7 @@
 package color;
-class color{
+public class color{
     public static final String blackback = "\u001B[40m";
-    public static final String redback = "\u001B[41m";
+    public final String redback = "\u001B[41m";
     public static final String greenback = "\u001B[42m";
     public static final String yellowback = "\u001B[43m";
     public static final String blueback = "\u001B[44m";

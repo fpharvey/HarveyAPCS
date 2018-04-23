@@ -1,17 +1,19 @@
+import color.*;
 import java.util.*;
-class listexperiment{
+public class listexperiment{
     public static int s = 0;
     public static int x = 0;
     public static int p = 0;
     public static String f = "f";
     public static ArrayList<String> hey = new ArrayList<String>();
+
     public static void main(String[] args){
         while(true){
             x = 1;
             for(int i = 0; i < hey.size();i ++){
                 System.out.println("("+i+") "+ hey.get(i));
             }
-                System.out.println("Would you like to remove or add to the list(R=0 or A=1): ");
+                System.out.println( color.redback + "Would you like to remove or add to the list(R=0 or A=1): ");
                 Scanner sca = new Scanner(System.in);
                 s = sca.nextInt();
                 if(s == 0 || s == 1){
